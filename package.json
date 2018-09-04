@@ -1,0 +1,55 @@
+{
+  "name": "minicomp",
+  "description": "A suite of tools for minimal computing",
+  "version": "0.0.0",
+  "author": "Moacir P. de Sá Pereira @muziejus",
+  "bin": {
+    "minicomp": "./bin/run"
+  },
+  "bugs": "https://github.com/muziejus/minicomp/issues",
+  "dependencies": {
+    "@oclif/command": "^1.5.0",
+    "@oclif/config": "^1.7.4",
+    "@oclif/plugin-help": "^2.1.1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.18.0",
+    "@oclif/test": "^1.2.0",
+    "chai": "^4.1.2",
+    "eslint": "^5.5.0",
+    "eslint-config-oclif": "^3.0.0",
+    "globby": "^8.0.1",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/muziejus/minicomp",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "GPL-3.0-or-later",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "minicomp",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "muziejus/minicomp",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
+    "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
