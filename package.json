@@ -41,7 +41,11 @@
     "commands": "./src/commands",
     "bin": "minicomp",
     "plugins": [
-      "@oclif/plugin-help"
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-commands",
+      "@oclif/plugin-autocomplete",
+      "@oclif/plugin-update"
     ]
   },
   "repository": "muziejus/minicomp",
