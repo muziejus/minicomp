@@ -1,0 +1,32 @@
+env:
+  browser: true
+  es6: true
+  node: true
+  amd: true
+  # for require
+extends: 
+  - "eslint:recommended"
+  - "plugin:prettier/recommended"
+  - "oclif"
+parserOptions:
+  sourceType: module
+rules:
+  "new-cap":
+    - 0
+  "node/no-unsupported-features/es-syntax":
+    - 1
+  eqeqeq:
+    - error
+    - always
+  linebreak-style:
+    - error
+    - unix
+  semi:
+    - error
+    - always
+  quotes:
+    - error
+    - double
+  "prettier/prettier":
+    - error
+plugins: [ "prettier" ]
