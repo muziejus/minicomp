@@ -10,21 +10,24 @@
   "dependencies": {
     "@oclif/command": "^1.5.0",
     "@oclif/config": "^1.7.4",
-    "@oclif/plugin-help": "^2.1.1"
+    "@oclif/plugin-help": "^2.1.1",
+    "@oclif/plugin-not-found": "*",
+    "@oclif/plugin-commands": "*",
+    "@oclif/plugin-update": "*",
+    "@oclif/plugin-autocomplete": "*",
+    "eslint-config-xo": "^0.25.0",
+    "eslint-plugin-unicorn": "^6.0.1"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.18.0",
     "@oclif/test": "^1.2.0",
+    "fancy-test": "^1.4.0",
     "chai": "^4.1.2",
-    "eslint": "^5.5.0",
-    "eslint-config-oclif": "^3.0.0",
+    "cucumber": "^4.2.1",
     "globby": "^8.0.1",
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",
-    "cucumber": "^4.2.1",
-    "eslint-config-prettier": "^3.0.1",
-    "eslint-plugin-prettier": "^2.6.2",
-    "prettier": "^1.14.2"
+    "xo": "^0.23.0"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -55,10 +58,40 @@
   "repository": "muziejus/minicomp",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
-    "posttest": "eslint .",
+    "posttest": "xo .",
     "prepack": "oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
-    "test": "nyc mocha --forbid-only \"test/**/*.test.js\"",
+    "test": "xo && nyc mocha --forbid-only \"test/**/*.test.js\"",
     "cucumber": "cucumber-js",
     "version": "oclif-dev readme && git add README.md"
+  },
+  "xo": {
+    "envs": [
+      "amd"
+    ],
+    "globals": [
+      "it",
+      "describe"
+    ],
+    "prettier": true,
+    "space": true,
+    "rules": {
+      "require-await": 0,
+      "quotes": [
+        "error",
+        "double"
+      ]
+    },
+    "overrides": [
+      {
+        "files": "features/**/*.js",
+        "rules": {
+          "new-cap": 0
+        }
+      }
+    ]
+  },
+  "prettier": {
+    "singleQuote": false,
+    "bracketSpacing": true
   }
 }
